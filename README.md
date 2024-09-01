@@ -1,6 +1,6 @@
-# FIAP AI 2024
+# FIAP AI - Artificial Intelligence Program - 2024
 
-Welcome to the **FIAP AI 2024 Online Closs** repository! This repository contains projects, assignments, and notes related to my journey through the Artificial Intelligence program at FIAP, São Paulo, Brazil.
+Welcome to the **FIAP AI - Artificial Intelligence Program - 2024** repository! This repository contains projects, assignments, and notes related to my journey through the Artificial Intelligence program at FIAP, São Paulo, Brazil.
 
 ## Table of Contents
 
