@@ -22,4 +22,4 @@ The program is structured over two years and is divided into the following modul
 For any questions or further information, please feel free to contact me:
 
 - **Name**: Jonatas Gomes
-- **Email**: jonatasgomes@gmail.com](mailto:jonatasgomes@gmail.com)
+- **Email**: [jonatasgomes@gmail.com](mailto:jonatasgomes@gmail.com)
