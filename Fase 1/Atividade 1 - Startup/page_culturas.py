@@ -27,14 +27,14 @@ conn = db.get_connection()
 c = conn.cursor()
 
 # mostrar as culturas
-st.write('Culturas usadas nesta fazenda:')
+st.markdown('Culturas usadas nesta fazenda <small>(clique para editar)</small>:', unsafe_allow_html=True)
 c.execute('SELECT * FROM culturas')
 culturas = c.fetchall()
 col1, col2, col3 = st.columns(3)
 for i, cult in enumerate(culturas):
     col = [col1, col2, col3][i % 3]
     with col:
-        st.button(f'{cult[1]}  ✏️', on_click=editar_cultura, args=(cult[0], cult[1]), key=cult[0])
+        st.button(f'🌱 &nbsp;&nbsp;{cult[1]} ', on_click=editar_cultura, args=(cult[0], cult[1]), key=cult[0])
 
 # criar o formulário
 with st.form('form_cultura', clear_on_submit=True):
