@@ -10,12 +10,14 @@ def login():
         if st.form_submit_button("Entrar", type="primary"):
             if username == "demo" and password == "demo":
                 st.session_state.logged_in = True
+                db.check_database()
                 st.rerun()
             else:
                 st.error("Invalid username or password")
 
 def logout():
     if st.button("Sair", type="primary"):
+        db.close_connection()
         st.session_state.logged_in = False
         st.rerun()
 
@@ -65,5 +67,4 @@ if st.session_state.logged_in:
 else:
     pg = st.navigation([login_page])
 
-db.check_database()
 pg.run()

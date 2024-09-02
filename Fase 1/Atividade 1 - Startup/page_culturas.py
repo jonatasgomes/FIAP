@@ -10,31 +10,26 @@ def editar_cultura(_id, _nome):
     st.session_state['nome_cultura'] = _nome
 
 def deletar_cultura(_id):
-    c.execute('DELETE FROM culturas WHERE id = ?', (_id,))
-    conn.commit()
+    db.run('DELETE FROM areas WHERE id_cultura = ?', (_id,))
+    db.run('DELETE FROM culturas WHERE id = ?', (_id,))
     limpar_sessao()
 
 def salvar_cultura(_id, _nome):
     if _id:
-        c.execute('UPDATE culturas SET cultura = ? WHERE id = ?', (_nome.capitalize(), _id))
+        db.run('UPDATE culturas SET cultura = ? WHERE id = ?', (_nome.capitalize(), _id))
     else:
-        c.execute('INSERT INTO culturas (cultura) VALUES (?)', (_nome.capitalize(),))
+        db.run('INSERT INTO culturas (cultura) VALUES (?)', (_nome.capitalize(),))
     limpar_sessao()
-    conn.commit()
-
-# conectar ao banco de dados
-conn = db.get_connection()
-c = conn.cursor()
 
 # mostrar as culturas
-st.markdown('Culturas usadas nesta fazenda <small>(clique para editar)</small>:', unsafe_allow_html=True)
-c.execute('SELECT * FROM culturas')
-culturas = c.fetchall()
-col1, col2, col3 = st.columns(3)
-for i, cult in enumerate(culturas):
-    col = [col1, col2, col3][i % 3]
-    with col:
-        st.button(f'🌱 &nbsp;&nbsp;{cult[1]} ', on_click=editar_cultura, args=(cult[0], cult[1]), key=cult[0])
+st.markdown('Com quais culturas você deseja trabalhar? <small>(clique na cultura para editar)</small>', unsafe_allow_html=True)
+culturas = db.query('SELECT * FROM culturas')
+if culturas:
+    col1, col2, col3 = st.columns(3)
+    for i, cult in enumerate(culturas):
+        col = [col1, col2, col3][i % 3]
+        with col:
+            st.button(f'🌱 &nbsp;&nbsp;{cult[1]} ', on_click=editar_cultura, args=(cult[0], cult[1]), key=cult[0])
 
 # criar o formulário
 with st.form('form_cultura', clear_on_submit=True):
