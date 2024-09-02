@@ -1,8 +1,9 @@
 import streamlit as st
+import database as db
 
 def login():
     with st.form("login_form"):
-        cliente = st.selectbox("Selecione um Cliente", ["Fazenda Boa Colheita"])
+        st.selectbox("Selecione um Cliente", ["Fazenda Boa Colheita"])
         username = st.text_input("Usuário", value="demo")
         password = st.text_input("Senha", type="password", value="demo")
 
@@ -46,7 +47,7 @@ with st.container():
     st.markdown("<h1 style='text-align: center; color: darkgreen;'>FarmTech Solutions</h1>"
                 f"<h6 style='text-align: center; color: darkgreen; margin-top: -20px;'>{leaf} Agricultura digital => inovação + tecnologia = produtividade + sustentabilidade {leaf}</h6>",
                 unsafe_allow_html=True
-    )
+                )
 
 # checar se o usuário está logado
 if "logged_in" not in st.session_state:
@@ -64,4 +65,5 @@ if st.session_state.logged_in:
 else:
     pg = st.navigation([login_page])
 
+db.check_database()
 pg.run()
