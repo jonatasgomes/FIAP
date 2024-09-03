@@ -1,6 +1,7 @@
 import streamlit as st
 import database as db
 
+# página de login
 def login():
     with st.form("login_form"):
         st.selectbox("Selecione um Cliente", ["Fazenda Boa Colheita"])
@@ -15,13 +16,15 @@ def login():
             else:
                 st.error("Invalid username or password")
 
+# página de logout
 def logout():
+    st.warning("Tem certeza que deseja sair?")
     if st.button("Sair", type="primary"):
         db.close_connection()
         st.session_state.logged_in = False
         st.rerun()
 
-# criar as páginas
+# carregar páginas
 login_page = st.Page(login, title="Entrar", icon=":material/login:")
 logout_page = st.Page(logout, title="Sair", icon=":material/logout:")
 inicio = st.Page(
@@ -37,7 +40,7 @@ insumos = st.Page(
 estatisticas = st.Page("page_estatisticas.py", title="Estatísticas", icon="📈")
 meteorologia = st.Page("page_meteorologia.py", title="Meteorologia", icon="🌦️")
 
-# script para adicionar fontawesome
+# adicionar fontawesome via cdn
 st.markdown(
     '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">',
     unsafe_allow_html=True
@@ -47,7 +50,8 @@ st.markdown(
 with st.container():
     leaf = "<i class='fas fa-leaf' style='color: green;'>"
     st.markdown("<h1 style='text-align: center; color: darkgreen;'>FarmTech Solutions</h1>"
-                f"<h6 style='text-align: center; color: darkgreen; margin-top: -20px;'>{leaf} Agricultura digital => inovação + tecnologia = produtividade + sustentabilidade {leaf}</h6>",
+                f"<h6 style='text-align: center; color: darkgreen; margin-top: -20px;'>{leaf} "
+                f"Agricultura digital => inovação + tecnologia = produtividade + sustentabilidade {leaf}</h6>",
                 unsafe_allow_html=True
                 )
 
@@ -67,4 +71,5 @@ if st.session_state.logged_in:
 else:
     pg = st.navigation([login_page])
 
+# carregar navegação multi-páginas
 pg.run()

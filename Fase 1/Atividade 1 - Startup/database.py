@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('database.db', check_same_thread=False, timeout=10)
+conn = None
 
 def log_error(error):
     f = open('app_errors.log', 'a')
@@ -8,11 +8,14 @@ def log_error(error):
     f.close()
 
 def get_connection():
+    global conn
+    if conn is None:
+        conn = sqlite3.connect("database.db")
     return conn
 
 def check_database():
     try:
-        c = conn.cursor()
+        c = get_connection().cursor()
         c.execute('CREATE TABLE IF NOT EXISTS culturas (id INTEGER PRIMARY KEY, cultura TEXT)')
         c.execute(
             'CREATE TABLE IF NOT EXISTS areas ('
@@ -27,13 +30,13 @@ def check_database():
             'base_menor INTEGER, '
             'area INTEGER'
             ')')
-        conn.commit()
+        get_connection().commit()
     except Exception as e:
         log_error(str(e))
 
 def query(stmt) -> list:
     try:
-        c = conn.cursor()
+        c = get_connection().cursor()
         c.execute(stmt)
         return c.fetchall()
     except Exception as e:
@@ -41,14 +44,17 @@ def query(stmt) -> list:
 
 def run(stmt, params):
     try:
-        c = conn.cursor()
+        c = get_connection().cursor()
         c.execute(stmt, params)
-        conn.commit()
+        get_connection().commit()
     except Exception as e:
         log_error(str(e))
 
 def close_connection():
+    global conn
     try:
-        conn.close()
+        get_connection().close()
+        conn = None
     except Exception as e:
+        conn = None
         log_error(str(e))
