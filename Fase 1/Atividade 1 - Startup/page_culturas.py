@@ -10,6 +10,7 @@ def editar_cultura(_id, _nome):
     st.session_state['nome_cultura'] = _nome
 
 def deletar_cultura(_id):
+    db.run('DELETE FROM insumos WHERE id_cultura = ?', (_id,))
     db.run('DELETE FROM areas WHERE id_cultura = ?', (_id,))
     db.run('DELETE FROM culturas WHERE id = ?', (_id,))
     limpar_sessao()
