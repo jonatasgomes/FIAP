@@ -77,20 +77,33 @@ def close_connection():
 def culturas() -> list:
     return query('SELECT id, cultura FROM culturas')
 
-def salvar_insumo(id_cultura, produto, dosagem, unidade, ruas, comprimento, total):
-    run(
-        'INSERT INTO insumos (id_cultura, produto, dosagem, unidade, ruas, comprimento, total) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        (id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
-    )
+def salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total):
+    if _id is not None:
+        run(
+            'UPDATE insumos SET id_cultura = ?, produto = ?, dosagem = ?, unidade = ?, ruas = ?, comprimento = ?, total = ? WHERE id = ?',
+            (id_cultura, produto, dosagem, unidade, ruas, comprimento, total, _id)
+        )
+    else:
+        run(
+            'INSERT INTO insumos (id_cultura, produto, dosagem, unidade, ruas, comprimento, total) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            (id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
+        )
 
 def excluir_insumo(id):
     run('DELETE FROM insumos WHERE id = ?', (id,))
 
 def insumos() -> pd.DataFrame:
     r = query(
-        'SELECT i.id, c.cultura, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total'
+        'SELECT i.id, c.cultura, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
         '  FROM insumos i LEFT JOIN'
         '       culturas c'
         '    ON c.id = i.id_cultura'
     )
     return pd.DataFrame(r, columns=['ID', 'Cultura', 'Produto', 'Dosagem', 'Unidade', 'Ruas', 'Comprimento', 'Total']).set_index('ID')
+
+def insumo(_id) -> list:
+    return query(
+        'SELECT i.id_cultura, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento'
+        '  FROM insumos i'
+        ' WHERE i.id = ' + str(_id)
+    )

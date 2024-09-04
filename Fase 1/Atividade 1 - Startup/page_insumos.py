@@ -1,57 +1,86 @@
 import streamlit as st
-import database as db
-import time
+from pyparsing import empty
 
-def limpar_sessao():
-    st.session_state.pop('novo_insumo')
+import database as db
+
+lista_produtos = ["Nitrogênio", "Fósforo", "Potássio", "Calcário", "Herbicidas", "Fungicidas", "Inseticidas"]
+lista_unidades = ["L", "Kg"]
 
 # Adicionar Insumo em janela modal
 @st.dialog("Detalhes do Insumo")
-def novo_insumo():
+def detalhes_insumo(_id=None):
+    _id_cultura = 0
+    _ruas = 1
+    _comprimento = 1
+    _produto = 0
+    _unidade = 1
+    _dosagem = 0.5
     culturas = db.culturas()
+    if _id is not None:
+        insumo = db.insumo(_id)
+        if insumo is not None:
+            try:
+                _id_cultura = [x[0] for x in culturas].index(insumo[0][0])
+            except ValueError:
+                _id_cultura = 0
+            try:
+                _produto = lista_produtos.index(insumo[0][1])
+            except ValueError:
+                _produto = 0
+            try:
+                _dosagem = insumo[0][2]
+            except ValueError:
+                _dosagem = 0.5
+            try:
+                _unidade = lista_unidades.index(insumo[0][3])
+            except ValueError:
+                _unidade = 1
+            try:
+                _ruas = insumo[0][4]
+            except ValueError:
+                _ruas = 1
+            try:
+                _comprimento = insumo[0][5]
+            except ValueError:
+                _comprimento = 1
+
     cols = st.columns(3)
     with cols[0]:
-        id_cultura = st.selectbox("Cultura", culturas, index=0, placeholder="Selecione...", format_func=lambda x: x[1])[0]
+        id_cultura = st.selectbox("Cultura", culturas, index=_id_cultura, placeholder="Selecione...", format_func=lambda x: x[1])[0]
     with cols[1]:
-        ruas = st.number_input("Total de Ruas", min_value=1, step=1)
+        ruas = st.number_input("Total de Ruas", min_value=_ruas, step=1)
     with cols[2]:
-        comprimento = st.number_input("Comprimento (m)", min_value=1, step=1)
+        comprimento = st.number_input("Comprimento (m)", min_value=_comprimento, step=1)
     cols = st.columns(3)
     with cols[0]:
-        produto = st.selectbox("Insumo", ["Nitrogênio", "Fósforo", "Potássio", "Calcárioo", "Herbicidas", "Fungicidas", "Inseticidas"], index=0, placeholder="Selecione...")
+        produto = st.selectbox("Insumo", lista_produtos, index=_produto, placeholder="Selecione...")
     with cols[1]:
-        unidade = st.selectbox("Unidade", ["L", "Kg"], index=0, placeholder="Selecione...")
+        unidade = st.selectbox("Unidade", lista_unidades, index=_unidade, placeholder="Selecione...")
     with cols[2]:
-        dosagem = st.number_input(f'Qtde p/ metro ({unidade})', min_value=0.5, step=0.5)
+        dosagem = st.number_input(f'Qtde p/ metro ({unidade})', min_value=_dosagem, step=0.5)
     total = dosagem * comprimento * ruas
     st.metric(f"Total de {produto}", f"{total:.2f}{unidade}")
-    if st.button("Salvar", type="primary"):
-        st.session_state.novo_insumo = {"id_cultura": id_cultura, "ruas": ruas, "comprimento": comprimento, "produto": produto, "unidade": unidade, "dosagem": dosagem, "total": total}
-        st.rerun()
+    _col1, _col2 = st.columns([2, 9])
+    with _col1:
+        if st.button("Salvar", type="primary"):
+            db.salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
+            st.rerun()
+    with _col2:
+        if _id is not None and st.button("Excluir"):
+            db.excluir_insumo(_id)
+            st.rerun()
 
-# botão adicionar insumo
-st.button("Adicionar Insumo", type="primary", on_click=novo_insumo)
-if "novo_insumo" in st.session_state:
-    db.salvar_insumo(
-        st.session_state.novo_insumo["id_cultura"],
-        st.session_state.novo_insumo["produto"],
-        st.session_state.novo_insumo["dosagem"],
-        st.session_state.novo_insumo["unidade"],
-        st.session_state.novo_insumo["ruas"],
-        st.session_state.novo_insumo["comprimento"],
-        st.session_state.novo_insumo["total"]
-    )
-    st.success("Insumo adicionado com sucesso!")
-    limpar_sessao()
-
-# grid mostrandos os insumos
+# grid mostrando os insumos
+st.markdown("Insumos cadastrados. <small>(selecione um insumo para editar)</small>", unsafe_allow_html=True)
 df = db.insumos()
-grid = st.dataframe(df, use_container_width=True, selection_mode="single-row", on_select='rerun')
+grid = st.dataframe(df, use_container_width=True, selection_mode="single-row", on_select='rerun', hide_index=True)
+col1, col2 = st.columns([4, 14])
+with col1:
+    # botão adicionar insumo
+    st.button("Adicionar Insumo", type="primary", on_click=detalhes_insumo)
 if len(grid.selection['rows']) > 0:
-    selected_idx = grid.selection['rows'][0]
-    selected_id = int(df.index[selected_idx])
-    if st.button("Excluir Insumo Selecionado"):
-        db.excluir_insumo(selected_id)
-        st.success(f"Insumo excluído com sucesso! {selected_id}")
-        time.sleep(1)
-        st.rerun()
+    with col2:
+        selected_idx = grid.selection['rows'][0]
+        selected_id = int(df.index[selected_idx])
+        if st.button("Editar Insumo"):
+            detalhes_insumo(selected_id)
