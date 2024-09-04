@@ -1,7 +1,7 @@
 import streamlit as st
 import database as db
 
-def limpar_sessao(full=False):
+def limpar_sessao():
     st.session_state['id_cultura'] = None
     st.session_state['nome_cultura'] = None
 
@@ -17,28 +17,12 @@ def editar_area(_id_cultura, _nome, _largura, _comprimento, _base, _altura, _rai
     st.session_state['figura'] = _figura
 
 def salvar_area(_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura):
-    db.run('DELETE FROM areas WHERE id_cultura = ?', (_id_cultura,))
-    db.run(
-        'INSERT INTO areas (id_cultura, largura, comprimento, base, altura, raio, base_menor, area, figura)'
-        ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        (_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura)
-    )
+    db.salvar_area(_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura)
     limpar_sessao()
 
 # mostrar as culturas
 st.markdown('Calcule as áreas de plantio para cada cultura. <small>(clique na cultura para editar)</small>', unsafe_allow_html=True)
-culturas = db.query(
-    'SELECT c.id, c.cultura, a.largura, a.comprimento, a.base, a.altura, a.raio, a.base_menor, a.figura,'
-    '       "🌱&nbsp;&nbsp;" || c.cultura || "\n\r📏&nbsp;&nbsp;" ||'
-    '       case'
-    '           when a.area is null then "...\n\r📐&nbsp;&nbsp;..."'
-    '           else a.area || "m² (" || trim(coalesce("lg " || a.largura || ", ", "") || coalesce("cp " || a.comprimento || ", ", "") ||'
-    '                coalesce("bs " || a.base || ", ", "") || coalesce("al " || a.altura || ", ", "") || coalesce("ra " || a.raio || ", ", "") ||'
-    '                coalesce("bm " || a.base_menor || ", ", ""), ", ") || ")\n\r📐️&nbsp;&nbsp;" || a.figura'
-    '       end btn'
-    '  FROM culturas c'
-    '  LEFT JOIN areas a ON a.id_cultura = c.id'
-)
+culturas = db.culturas_info()
 if culturas:
     col1, col2, col3 = st.columns(3)
     for i, cult in enumerate(culturas):

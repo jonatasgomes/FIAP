@@ -1,26 +1,37 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 
+# Create a sample DataFrame
+df = pd.DataFrame({
+    'Variável': ['A', 'B', 'C'],
+    'Média': [1.2, 2.3, 3.4],
+    'Desvio Padrão': [0.1, 0.2, 0.3]
+})
 
-data = {
-    'Country': ['United States', 'Canada', 'Germany', 'France', 'Japan'],
-    'Capital': ['Washington, D.C.', 'Ottawa', 'Berlin', 'Paris', 'Tokyo']
-}
+# Create an HTML table with right-aligned column headers
+html_table = """
+<table>
+  <tr>
+    <th style="text-align: right;">Variável</th>
+    <th style="text-align: right;">Média</th>
+    <th style="text-align: right;">Desvio Padrão</th>
+  </tr>
+"""
 
+# Add the DataFrame rows to the HTML table
+for index, row in df.iterrows():
+    html_table += f"""
+  <tr>
+    <td>{row['Variável']}</td>
+    <td style="text-align: right;">{row['Média']:.2f}</td>
+    <td style="text-align: right;">{row['Desvio Padrão']:.2f}</td>
+  </tr>
+"""
 
-df = pd.DataFrame(data)
-st.title('Countries and Their Capitals')
+# Close the HTML table
+html_table += """
+</table>
+"""
 
-event = st.dataframe(
-    df,
-    on_select='rerun',
-    selection_mode='single-row',
-)
-
-if len(event.selection['rows']):
-    selected_row = event.selection['rows'][0]
-    country = df.iloc[selected_row]['Country']
-    capital = df.iloc[selected_row]['Capital']
-
-    st.session_state['country_data'] = {'country': country, 'capital': capital}
-    st.page_link('pages/detail.py', label=f'Goto {country} Page', icon='🗺️')
+# Display the HTML table in Streamlit
+st.markdown(html_table, unsafe_allow_html=True)

@@ -10,21 +10,16 @@ def editar_cultura(_id, _nome):
     st.session_state['nome_cultura'] = _nome
 
 def deletar_cultura(_id):
-    db.run('DELETE FROM insumos WHERE id_cultura = ?', (_id,))
-    db.run('DELETE FROM areas WHERE id_cultura = ?', (_id,))
-    db.run('DELETE FROM culturas WHERE id = ?', (_id,))
+    db.deletar_cultura(_id)
     limpar_sessao()
 
 def salvar_cultura(_id, _nome):
-    if _id:
-        db.run('UPDATE culturas SET cultura = ? WHERE id = ?', (_nome.capitalize(), _id))
-    else:
-        db.run('INSERT INTO culturas (cultura) VALUES (?)', (_nome.capitalize(),))
+    db.salvar_cultura(_id, _nome)
     limpar_sessao()
 
 # mostrar as culturas
 st.markdown('Com quais culturas você deseja trabalhar? <small>(clique na cultura para editar)</small>', unsafe_allow_html=True)
-culturas = db.query('SELECT * FROM culturas')
+culturas = db.culturas()
 if culturas:
     col1, col2, col3 = st.columns(3)
     for i, cult in enumerate(culturas):

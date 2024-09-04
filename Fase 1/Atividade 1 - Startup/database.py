@@ -1,12 +1,13 @@
 import sqlite3
 import pandas as pd
+import datetime
 
 _conn = None
 
 def log_error(error):
-    f = open('app_errors.log', 'a')
-    f.write(error + '\n')
-    f.close()
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open('app_errors.log', 'a') as f:
+        f.write(f"{timestamp} - {error}\n")
 
 def get_connection():
     global _conn
@@ -77,6 +78,39 @@ def close_connection():
 def culturas() -> list:
     return query('SELECT id, cultura FROM culturas')
 
+def culturas_info() -> list:
+    return query(
+        'SELECT c.id, c.cultura, a.largura, a.comprimento, a.base, a.altura, a.raio, a.base_menor, a.figura,'
+        '       "🌱&nbsp;&nbsp;" || c.cultura || "\n\r📏&nbsp;&nbsp;" ||'
+        '       case'
+        '           when a.area is null then "...\n\r📐&nbsp;&nbsp;..."'
+        '           else a.area || "m² (" || trim(coalesce("lg " || a.largura || ", ", "") || coalesce("cp " || a.comprimento || ", ", "") ||'
+        '                coalesce("bs " || a.base || ", ", "") || coalesce("al " || a.altura || ", ", "") || coalesce("ra " || a.raio || ", ", "") ||'
+        '                coalesce("bm " || a.base_menor || ", ", ""), ", ") || ")\n\r📐️&nbsp;&nbsp;" || a.figura'
+        '       end btn'
+        '  FROM culturas c'
+        '  LEFT JOIN areas a ON a.id_cultura = c.id'
+    )
+
+def salvar_cultura(_id, _nome):
+    if _id:
+        run('UPDATE culturas SET cultura = ? WHERE id = ?', (_nome.capitalize(), _id))
+    else:
+        run('INSERT INTO culturas (cultura) VALUES (?)', (_nome.capitalize(),))
+
+def deletar_cultura(_id):
+    run('DELETE FROM insumos WHERE id_cultura = ?', (_id,))
+    run('DELETE FROM areas WHERE id_cultura = ?', (_id,))
+    run('DELETE FROM culturas WHERE id = ?', (_id,))
+
+def salvar_area(_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura):
+    run('DELETE FROM areas WHERE id_cultura = ?', (_id_cultura,))
+    run(
+        'INSERT INTO areas (id_cultura, largura, comprimento, base, altura, raio, base_menor, area, figura)'
+        ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        (_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura)
+    )
+
 def salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total):
     if _id is not None:
         run(
@@ -89,17 +123,19 @@ def salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento,
             (id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
         )
 
-def excluir_insumo(id):
-    run('DELETE FROM insumos WHERE id = ?', (id,))
+def excluir_insumo(_id):
+    run('DELETE FROM insumos WHERE id = ?', (_id,))
 
 def insumos() -> pd.DataFrame:
     r = query(
-        'SELECT i.id, c.cultura, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
-        '  FROM insumos i LEFT JOIN'
-        '       culturas c'
+        'SELECT i.id, c.cultura, a.figura || " (" || printf("%,d", a.area) || "m²)" as area, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
+        '  FROM insumos i'
+        '  LEFT JOIN culturas c'
         '    ON c.id = i.id_cultura'
+        '  LEFT JOIN areas a'
+        '    ON a.id_cultura = i.id_cultura'
     )
-    return pd.DataFrame(r, columns=['ID', 'Cultura', 'Produto', 'Dosagem', 'Unidade', 'Ruas', 'Comprimento', 'Total']).set_index('ID')
+    return pd.DataFrame(r, columns=['ID', 'Cultura', 'Área', 'Produto', 'Dosagem', 'Unidade', 'Ruas', 'Comprimento', 'Total']).set_index('ID')
 
 def insumo(_id) -> list:
     return query(
