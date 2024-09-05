@@ -1,37 +1,26 @@
-import pandas as pd
 import streamlit as st
+import subprocess
 
-# Create a sample DataFrame
-df = pd.DataFrame({
-    'Variável': ['A', 'B', 'C'],
-    'Média': [1.2, 2.3, 3.4],
-    'Desvio Padrão': [0.1, 0.2, 0.3]
-})
+# executa o script R
+def executar_script_r(_cidade, _pais):
+    _resultado = subprocess.run(
+        ['Rscript', 'R_chamar_api_clima.R', f'{_cidade}', f'{_pais}'],
+        capture_output=True,
+        text=True
+    )
+    return _resultado.stdout
 
-# Create an HTML table with right-aligned column headers
-html_table = """
-<table>
-  <tr>
-    <th style="text-align: right;">Variável</th>
-    <th style="text-align: right;">Média</th>
-    <th style="text-align: right;">Desvio Padrão</th>
-  </tr>
-"""
+st.markdown("Pesquise as condições climáticas em uma cidade.")
 
-# Add the DataFrame rows to the HTML table
-for index, row in df.iterrows():
-    html_table += f"""
-  <tr>
-    <td>{row['Variável']}</td>
-    <td style="text-align: right;">{row['Média']:.2f}</td>
-    <td style="text-align: right;">{row['Desvio Padrão']:.2f}</td>
-  </tr>
-"""
+col1, col2 = st.columns(2)
+with col1:
+    cidade = st.text_input("Cidade")
+with col2:
+    pais = st.text_input("País")
 
-# Close the HTML table
-html_table += """
-</table>
-"""
-
-# Display the HTML table in Streamlit
-st.markdown(html_table, unsafe_allow_html=True)
+if st.button("Buscar"):
+    if not cidade:
+        st.warning("Por favor, informe pelo menos a cidade.")
+    else:
+        resultado = executar_script_r(cidade, pais)
+        st.write(resultado)
