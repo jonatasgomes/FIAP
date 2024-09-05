@@ -14,14 +14,13 @@ def login():
                 db.check_database()
                 st.rerun()
             else:
-                st.error("Invalid username or password")
+                st.error("Usuário ou senha inválidos")
 
 # página de logout
 def logout():
     st.warning("Tem certeza que deseja sair?")
     if st.button("Sair", type="primary"):
         db.close_connection()
-        # st.session_state.logged_in = False
         st.session_state.clear()
         st.rerun()
 
