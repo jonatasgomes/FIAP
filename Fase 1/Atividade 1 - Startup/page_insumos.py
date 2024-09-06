@@ -1,11 +1,10 @@
 import streamlit as st
-
 import database as db
 
 lista_produtos = ["Nitrogênio", "Fósforo", "Potássio", "Calcário", "Herbicidas", "Fungicidas", "Inseticidas"]
 lista_unidades = ["L", "Kg"]
 
-# Adicionar Insumo em janela modal
+# adicionar insumo em janela modal
 @st.dialog("Detalhes do Insumo")
 def detalhes_insumo(_id=None):
     _id_cultura = 0

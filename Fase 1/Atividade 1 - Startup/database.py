@@ -75,8 +75,12 @@ def close_connection():
         _conn = None
         log_error(str(e))
 
-def culturas() -> list:
-    return query('SELECT id, cultura FROM culturas')
+def culturas() -> pd.DataFrame:
+    r = query('SELECT id, cultura FROM culturas')
+    return pd.DataFrame(r, columns=['ID', 'Cultura']).set_index('ID')
+
+def cultura(_id) -> list:
+    return query('SELECT id, cultura FROM culturas WHERE id = ' + str(_id))
 
 def culturas_info() -> list:
     return query(
@@ -98,7 +102,7 @@ def salvar_cultura(_id, _nome):
     else:
         run('INSERT INTO culturas (cultura) VALUES (?)', (_nome.capitalize(),))
 
-def deletar_cultura(_id):
+def excluir_cultura(_id):
     run('DELETE FROM insumos WHERE id_cultura = ?', (_id,))
     run('DELETE FROM areas WHERE id_cultura = ?', (_id,))
     run('DELETE FROM culturas WHERE id = ?', (_id,))
