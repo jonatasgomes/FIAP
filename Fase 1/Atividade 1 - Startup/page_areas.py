@@ -63,7 +63,7 @@ with st.form('form_cultura', clear_on_submit=True):
         if base and base_menor and altura:
             area = ((base + base_menor) * altura) / 2
     # converter área para hectares
-    area = round(area / 10000, 2)
+    area = round(area / 10000, 2) if area else None
     col1, col2, col3 = st.columns([3, 3, 14])
     with col1:
         submit_button = st.form_submit_button('Calcular', type='primary')

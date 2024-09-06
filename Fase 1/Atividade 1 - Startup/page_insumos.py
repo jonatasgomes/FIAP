@@ -45,6 +45,7 @@ def detalhes_insumo(_id=None):
 
     cols = st.columns(3)
     with cols[0]:
+        culturas = culturas or [(0, "Selecione...")]
         id_cultura = st.selectbox("Cultura", culturas, index=_id_cultura, placeholder="Selecione...", format_func=lambda x: x[1])[0]
     with cols[1]:
         ruas = st.number_input("Total de Ruas", min_value=_ruas, step=1)
@@ -59,15 +60,22 @@ def detalhes_insumo(_id=None):
         dosagem = st.number_input(f'Qtde p/ metro ({unidade})', min_value=_dosagem, step=0.5)
     total = dosagem * comprimento * ruas
     st.metric(f"Total de {produto}", f"{total:.2f}{unidade}")
+    erro_msg = None
     _col1, _col2 = st.columns([2, 9])
     with _col1:
         if st.button("Salvar", type="primary"):
-            db.salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
-            st.rerun()
+            if id_cultura > 0:
+                db.salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
+                st.rerun()
+            else:
+                erro_msg = "Por favor, selecione uma cultura."
     with _col2:
         if _id is not None and st.button("Excluir"):
             db.excluir_insumo(_id)
             st.rerun()
+
+    if erro_msg:
+        st.error(erro_msg)
 
 # grid mostrando os insumos
 st.markdown("Insumos cadastrados. <small>(selecione um insumo para editar)</small>", unsafe_allow_html=True)

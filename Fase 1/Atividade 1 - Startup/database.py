@@ -128,7 +128,7 @@ def excluir_insumo(_id):
 
 def insumos() -> pd.DataFrame:
     r = query(
-        'SELECT i.id, c.cultura, a.figura || " (" || printf("%,.2f", a.area) || "ha)" as area, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
+        'SELECT i.id, c.cultura, printf("%,.2f", a.area) || "ha - " || a.figura as area, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
         '  FROM insumos i'
         '  LEFT JOIN culturas c'
         '    ON c.id = i.id_cultura'
