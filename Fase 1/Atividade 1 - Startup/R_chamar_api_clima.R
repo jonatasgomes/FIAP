@@ -32,7 +32,7 @@ if (status_code(resposta) == 200) {
   # Exibir as informações meteorológicas
   cat("Cidade: ", dados_climaticos$name, "\n")
   cat("País: ", dados_climaticos$sys$country, "\n")
-  cat("Temperatura atual: ", dados_climaticos$main$temp, "°C\n")
+  cat("Temperatura atual: ", dados_climaticos$main$temp - 273.15, "°C\n")
   cat("Umidade do ar: ", dados_climaticos$main$humidity, "%\n")
   cat("Condição climática: ", dados_climaticos$weather[[1]]["description"], "\n")
 } else {

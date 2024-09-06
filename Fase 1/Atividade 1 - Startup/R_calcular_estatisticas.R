@@ -41,6 +41,7 @@ estatisticas_areas <- data.frame(
                     2
                   )
 )
+estatisticas_areas[is.na(estatisticas_areas)] <- 0
 
 # Fechar a conexão
 dbDisconnect(con)
