@@ -62,6 +62,8 @@ with st.form('form_cultura', clear_on_submit=True):
         altura = st.number_input('Altura (m)', min_value=0, max_value=9999, step=1, key='altura')
         if base and base_menor and altura:
             area = ((base + base_menor) * altura) / 2
+    # converter área para hectares
+    area = round(area / 10000, 2)
     col1, col2, col3 = st.columns([3, 3, 14])
     with col1:
         submit_button = st.form_submit_button('Calcular', type='primary')

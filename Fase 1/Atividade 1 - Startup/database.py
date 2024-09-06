@@ -29,7 +29,7 @@ def check_database():
                         'altura INTEGER, '
                         'raio INTEGER, '
                         'base_menor INTEGER, '
-                        'area INTEGER'
+                        'area REAL'
                         ');'
                         'CREATE TABLE IF NOT EXISTS insumos ('
                         'id INTEGER PRIMARY KEY, '
@@ -84,7 +84,7 @@ def culturas_info() -> list:
         '       "🌱&nbsp;&nbsp;" || c.cultura || "\n\r📏&nbsp;&nbsp;" ||'
         '       case'
         '           when a.area is null then "...\n\r📐&nbsp;&nbsp;..."'
-        '           else a.area || "m² (" || trim(coalesce("lg " || a.largura || ", ", "") || coalesce("cp " || a.comprimento || ", ", "") ||'
+        '           else a.area || "ha (" || trim(coalesce("lg " || a.largura || ", ", "") || coalesce("cp " || a.comprimento || ", ", "") ||'
         '                coalesce("bs " || a.base || ", ", "") || coalesce("al " || a.altura || ", ", "") || coalesce("ra " || a.raio || ", ", "") ||'
         '                coalesce("bm " || a.base_menor || ", ", ""), ", ") || ")\n\r📐️&nbsp;&nbsp;" || a.figura'
         '       end btn'
@@ -128,7 +128,7 @@ def excluir_insumo(_id):
 
 def insumos() -> pd.DataFrame:
     r = query(
-        'SELECT i.id, c.cultura, a.figura || " (" || printf("%,d", a.area) || "m²)" as area, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
+        'SELECT i.id, c.cultura, a.figura || " (" || printf("%,.2f", a.area) || "ha)" as area, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
         '  FROM insumos i'
         '  LEFT JOIN culturas c'
         '    ON c.id = i.id_cultura'
