@@ -1,78 +1,121 @@
 import streamlit as st
 import database as db
 
-def limpar_sessao():
-    st.session_state['id_cultura'] = None
-    st.session_state['nome_cultura'] = None
+figuras_lov = ['Retângulo', 'Triângulo', 'Círculo', 'Trapézio']
 
-def editar_area(_id_cultura, _nome, _largura, _comprimento, _base, _altura, _raio, _base_menor, _figura):
-    st.session_state['id_cultura'] = _id_cultura
-    st.session_state['nome_cultura'] = _nome
-    st.session_state['largura'] = _largura
-    st.session_state['comprimento'] = _comprimento
-    st.session_state['base'] = _base
-    st.session_state['altura'] = _altura
-    st.session_state['raio'] = _raio
-    st.session_state['base_menor'] = _base_menor
-    st.session_state['figura'] = _figura
+# adicionar área em janela modal
+@st.dialog("Detalhes da Área")
+def detalhes_area(_id=None):
+    _id_cultura = 0
+    _figura = 0
+    _largura = None
+    _comprimento = None
+    _base = None
+    _altura = None
+    _raio = None
+    _base_menor = None
+    _area = 0.0
+    culturas = db.culturas_lov()
+    if _id is not None:
+        area = db.area(_id)
+        if area is not None:
+            try:
+                _id_cultura = [x[0] for x in culturas].index(area[0][0])
+            except ValueError:
+                _id_cultura = 0
+            try:
+                _figura = figuras_lov.index(area[0][1])
+            except ValueError:
+                _figura = 0
+            _largura = area[0][2]
+            _comprimento = area[0][3]
+            _base = area[0][4]
+            _altura = area[0][5]
+            _raio = area[0][6]
+            _base_menor = area[0][7]
 
-def salvar_area(_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura):
-    db.salvar_area(_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura)
-    limpar_sessao()
+    culturas = culturas or [(0, "Selecione...")]
+    _id_cultura = st.selectbox("Cultura", culturas, index=_id_cultura, placeholder="Selecione...", format_func=lambda x: x[1])[0]
+    _figura = st.selectbox('Geometria da Área de Plantio', figuras_lov, index=_figura, placeholder='Selecione...')
+    if _figura == 'Retângulo':
+        _col1, _col2 = st.columns(2)
+        with _col1:
+            _largura = st.number_input("Largura (m)", min_value=_largura, step=1)
+        with _col2:
+            _comprimento = st.number_input("Comprimento (m)", min_value=_comprimento, step=1)
+        if _largura and _comprimento:
+            _area = _largura * _comprimento
+        _base = None
+        _altura = None
+        _raio = None
+        _base_menor = None
+    elif _figura == 'Triângulo':
+        _col1, _col2 = st.columns(2)
+        with _col1:
+            _base = st.number_input("Base (m)", min_value=_base, step=1)
+        with _col2:
+            _altura = st.number_input("Altura (m)", min_value=_altura, step=1)
+        if _base and _altura:
+            _area = (_base * _altura) / 2
+        _largura = None
+        _comprimento = None
+        _raio = None
+        _base_menor = None
+    elif _figura == 'Círculo':
+        _raio = st.number_input("Raio (m)", min_value=_raio, step=1)
+        if _raio:
+            _area = 3.14 * _raio * _raio
+        _largura = None
+        _comprimento = None
+        _base = None
+        _altura = None
+        _base_menor = None
+    elif _figura == 'Trapézio':
+        _col1, _col2, _col3 = st.columns(3)
+        with _col1:
+            _base = st.number_input("Base (m)", min_value=_base, step=1)
+        with _col2:
+            _base_menor = st.number_input("Base Menor (m)", min_value=_base_menor, step=1)
+        with _col3:
+            _altura = st.number_input("Altura (m)", min_value=_altura, step=1)
+        if _base and _base_menor and _altura:
+            _area = (_base + _base_menor) * _altura / 2
+        _largura = None
+        _comprimento = None
+        _raio = None
 
-# mostrar as culturas
-st.markdown('Calcule as áreas de plantio para cada cultura. <small>(clique na cultura para editar)</small>', unsafe_allow_html=True)
-culturas = db.culturas_info()
-if culturas:
-    col1, col2, col3 = st.columns(3)
-    for i, cult in enumerate(culturas):
-        col = [col1, col2, col3][i % 3]
-        with col:
-            st.button(f'{cult[9]}', on_click=editar_area, args=(cult[0], cult[1], cult[2], cult[3], cult[4], cult[5], cult[6], cult[7], cult[8]), key=cult[0])
+    # converter area em hectares
+    _area = _area / 10000 if _area else None
+    st.metric('Área de Plantio', f'{_area:.2f}ha' if _area else '0.0ha')
+    erro_msg = None
+    _col1, _col2 = st.columns([2, 9])
+    with _col1:
+        if st.button("Salvar", type="primary"):
+            if _id_cultura:
+                db.salvar_area(_id, _id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area)
+                st.rerun()
+            else:
+                erro_msg = "Por favor, informe a cultura."
+    with _col2:
+        if _id is not None and st.button("Excluir"):
+            db.excluir_area(_id)
+            st.rerun()
 
-# criar o formulário
-id_cultura = st.session_state.get('id_cultura', None)
-nome_cultura = st.text_input('Cultura', max_chars=128, value=st.session_state.get('nome_cultura', ''), disabled=True)
-figura = st.selectbox('Geometria da Área Plantada', ['Retângulo', 'Triângulo', 'Círculo', 'Trapézio'], key='figura', index=None, placeholder='Selecione...')
-largura = None
-comprimento = None
-base = None
-altura = None
-raio = None
-base_menor = None
-area = None
-with st.form('form_cultura', clear_on_submit=True):
-    if figura == 'Retângulo':
-        largura = st.number_input('Largura (m)', min_value=0, max_value=9999, step=1, key='largura')
-        comprimento = st.number_input('Comprimento (m)', min_value=0, max_value=9999, step=1, key='comprimento')
-        if largura and comprimento:
-            area = largura * comprimento
-    elif figura == 'Triângulo':
-        base = st.number_input('Base (m)', min_value=0, max_value=9999, step=1, key='base')
-        altura = st.number_input('Altura (m)', min_value=0, max_value=9999, step=1, key='altura')
-        if base and altura:
-            area = (base * altura) / 2
-    elif figura == 'Círculo':
-        raio = st.number_input('Raio (m)', min_value=0, max_value=9999, step=1, key='raio')
-        if raio:
-            area = 3.14 * raio ** 2
-    elif figura == 'Trapézio':
-        base = st.number_input('Base Maior (m)', min_value=0, max_value=9999, step=1, key='base')
-        base_menor = st.number_input('Base Menor (m)', min_value=0, max_value=9999, step=1, key='base_menor')
-        altura = st.number_input('Altura (m)', min_value=0, max_value=9999, step=1, key='altura')
-        if base and base_menor and altura:
-            area = ((base + base_menor) * altura) / 2
-    # converter área para hectares
-    area = round(area / 10000, 2) if area else None
-    col1, col2, col3 = st.columns([3, 3, 14])
-    with col1:
-        submit_button = st.form_submit_button('Calcular', type='primary')
+    if erro_msg:
+        st.error(erro_msg)
+
+# grid mostrando as culturas
+st.markdown("Calcule a área de plantio para cada cultura. <small>(selecione um registro para editar)</small>", unsafe_allow_html=True)
+df = db.areas().fillna('')
+grid = st.dataframe(df, use_container_width=True, selection_mode="single-row", on_select='rerun', hide_index=True)
+col1, col2 = st.columns([0.29, 0.71])
+with col1:
+    # botão adicionar cultura
+    st.button("Adicionar Área de Plantio", type="primary", on_click=detalhes_area)
+if len(grid.selection['rows']) > 0:
+    # botão editar cultura
     with col2:
-        st.form_submit_button('Limpar', type='secondary', on_click=limpar_sessao)
-
-if submit_button:
-    if id_cultura:
-        salvar_area(id_cultura, largura, comprimento, base, altura, raio, base_menor, area, figura)
-        st.rerun()
-    else:
-        st.error('Por favor, selecione uma cultura')
+        selected_idx = grid.selection['rows'][0]
+        selected_id = int(df.index[selected_idx])
+        if st.button("Editar Cultura"):
+            detalhes_area(selected_id)

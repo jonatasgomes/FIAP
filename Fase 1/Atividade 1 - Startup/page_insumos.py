@@ -13,7 +13,7 @@ def detalhes_insumo(_id=None):
     _produto = 0
     _unidade = 1
     _dosagem = 0.5
-    culturas = db.culturas()
+    culturas = db.culturas_lov()
     if _id is not None:
         insumo = db.insumo(_id)
         if insumo is not None:
@@ -77,7 +77,7 @@ def detalhes_insumo(_id=None):
         st.error(erro_msg)
 
 # grid mostrando os insumos
-st.markdown("Insumos cadastrados. <small>(selecione um insumo para editar)</small>", unsafe_allow_html=True)
+st.markdown("Insumos cadastrados. <small>(selecione um registro para editar)</small>", unsafe_allow_html=True)
 df = db.insumos()
 grid = st.dataframe(df, use_container_width=True, selection_mode="single-row", on_select='rerun', hide_index=True)
 col1, col2 = st.columns([4, 14])

@@ -29,7 +29,7 @@ def detalhes_cultura(_id=None):
         st.error(erro_msg)
 
 # grid mostrando as culturas
-st.markdown("Com quais culturas você deseja trabalhar? <small>(selecione uma cultura para editar)</small>", unsafe_allow_html=True)
+st.markdown("Com quais culturas você deseja trabalhar? <small>(selecione um registro para editar)</small>", unsafe_allow_html=True)
 df = db.culturas()
 grid = st.dataframe(df, use_container_width=True, selection_mode="single-row", on_select='rerun', hide_index=True)
 col1, col2 = st.columns([4, 14])

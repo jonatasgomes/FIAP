@@ -75,26 +75,15 @@ def close_connection():
         _conn = None
         log_error(str(e))
 
+def culturas_lov() -> list:
+    return query('SELECT id, cultura FROM culturas')
+
 def culturas() -> pd.DataFrame:
     r = query('SELECT id, cultura FROM culturas')
     return pd.DataFrame(r, columns=['ID', 'Cultura']).set_index('ID')
 
 def cultura(_id) -> list:
     return query('SELECT id, cultura FROM culturas WHERE id = ' + str(_id))
-
-def culturas_info() -> list:
-    return query(
-        'SELECT c.id, c.cultura, a.largura, a.comprimento, a.base, a.altura, a.raio, a.base_menor, a.figura,'
-        '       "🌱&nbsp;&nbsp;" || c.cultura || "\n\r📏&nbsp;&nbsp;" ||'
-        '       case'
-        '           when a.area is null then "...\n\r📐&nbsp;&nbsp;..."'
-        '           else a.area || "ha (" || trim(coalesce("lg " || a.largura || ", ", "") || coalesce("cp " || a.comprimento || ", ", "") ||'
-        '                coalesce("bs " || a.base || ", ", "") || coalesce("al " || a.altura || ", ", "") || coalesce("ra " || a.raio || ", ", "") ||'
-        '                coalesce("bm " || a.base_menor || ", ", ""), ", ") || ")\n\r📐️&nbsp;&nbsp;" || a.figura'
-        '       end btn'
-        '  FROM culturas c'
-        '  LEFT JOIN areas a ON a.id_cultura = c.id'
-    )
 
 def salvar_cultura(_id, _nome):
     if _id:
@@ -107,13 +96,34 @@ def excluir_cultura(_id):
     run('DELETE FROM areas WHERE id_cultura = ?', (_id,))
     run('DELETE FROM culturas WHERE id = ?', (_id,))
 
-def salvar_area(_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura):
-    run('DELETE FROM areas WHERE id_cultura = ?', (_id_cultura,))
-    run(
-        'INSERT INTO areas (id_cultura, largura, comprimento, base, altura, raio, base_menor, area, figura)'
-        ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        (_id_cultura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _figura)
+def area(_id) -> list:
+    return query('SELECT id_cultura, figura, largura, comprimento, base, altura, raio, base_menor, area FROM areas WHERE id = ' + str(_id))
+
+def areas() -> pd.DataFrame:
+    r = query(
+        'SELECT a.id, c.cultura, a.figura, a.largura || "m" as largura, a.comprimento || "m" as comprimento,'
+        '       a.base || "m" as base, a.altura || "m" as altura, a.raio || "m" as raio,'
+        '       a.base_menor || "m" as base_menor, printf("%,.2f", a.area) || "ha" as area'
+        '  FROM culturas c, areas a'
+        ' WHERE a.id_cultura = c.id'
     )
+    return pd.DataFrame(r, columns=['ID', 'Cultura', 'Figura', 'Largura', 'Comprimento', 'Base', 'Altura', 'Raio', 'Base Menor', 'Área']).set_index('ID')
+
+def salvar_area(_id, _id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area):
+    if _id is not None:
+        run(
+            'UPDATE areas SET id_cultura = ?, figura = ?, largura = ?, comprimento = ?, base = ?, altura = ?, raio = ?, base_menor = ?, area = ? WHERE id = ?',
+            (_id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _id)
+        )
+    else:
+        run(
+            'INSERT INTO areas (id_cultura, figura, largura, comprimento, base, altura, raio, base_menor, area) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            (_id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area)
+        )
+
+def excluir_area(_id):
+    run('DELETE FROM insumos WHERE id_area = ?', (_id,))
+    run('DELETE FROM areas WHERE id = ?', (_id,))
 
 def salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total):
     if _id is not None:
