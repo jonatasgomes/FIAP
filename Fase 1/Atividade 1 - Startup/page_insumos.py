@@ -8,12 +8,14 @@ lista_unidades = ["L", "Kg"]
 @st.dialog("Detalhes do Insumo")
 def detalhes_insumo(_id=None):
     _id_cultura = 0
+    _id_area = 0
     _ruas = 1
     _comprimento = 1
     _produto = 0
     _unidade = 1
     _dosagem = 0.5
     culturas = db.culturas_lov()
+    areas = db.areas_lov()
     if _id is not None:
         insumo = db.insumo(_id)
         if insumo is not None:
@@ -22,30 +24,36 @@ def detalhes_insumo(_id=None):
             except ValueError:
                 _id_cultura = 0
             try:
-                _produto = lista_produtos.index(insumo[0][1])
+                _id_area = [x[0] for x in areas].index(insumo[0][1])
+            except ValueError:
+                _id_cultura = 0
+            try:
+                _produto = lista_produtos.index(insumo[0][2])
             except ValueError:
                 _produto = 0
             try:
-                _dosagem = insumo[0][2]
+                _dosagem = insumo[0][3]
             except ValueError:
                 _dosagem = 0.5
             try:
-                _unidade = lista_unidades.index(insumo[0][3])
+                _unidade = lista_unidades.index(insumo[0][4])
             except ValueError:
                 _unidade = 1
             try:
-                _ruas = insumo[0][4]
+                _ruas = insumo[0][5]
             except ValueError:
                 _ruas = 1
             try:
-                _comprimento = insumo[0][5]
+                _comprimento = insumo[0][6]
             except ValueError:
                 _comprimento = 1
 
+    culturas = culturas or [(0, "Selecione...")]
+    id_cultura = st.selectbox("Cultura", culturas, index=_id_cultura, placeholder="Selecione...", format_func=lambda x: x[1])[0]
     cols = st.columns(3)
     with cols[0]:
-        culturas = culturas or [(0, "Selecione...")]
-        id_cultura = st.selectbox("Cultura", culturas, index=_id_cultura, placeholder="Selecione...", format_func=lambda x: x[1])[0]
+        areas = areas or [(0, "Selecione...")]
+        id_area = st.selectbox("Área de Plantio", areas, index=_id_area, placeholder="Selecione...", format_func=lambda x: x[1])[0]
     with cols[1]:
         ruas = st.number_input("Total de Ruas", min_value=_ruas, step=1)
     with cols[2]:
@@ -63,11 +71,11 @@ def detalhes_insumo(_id=None):
     _col1, _col2 = st.columns([2, 9])
     with _col1:
         if st.button("Salvar", type="primary"):
-            if id_cultura > 0:
-                db.salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
+            if id_cultura > 0 and id_area > 0:
+                db.salvar_insumo(_id, id_cultura, id_area, produto, dosagem, unidade, ruas, comprimento, total)
                 st.rerun()
             else:
-                erro_msg = "Por favor, selecione uma cultura."
+                erro_msg = "Por favor, informe os dados do insumo."
     with _col2:
         if _id is not None and st.button("Excluir"):
             db.excluir_insumo(_id)

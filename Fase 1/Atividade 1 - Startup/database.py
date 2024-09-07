@@ -21,7 +21,7 @@ def check_database():
         c.executescript('CREATE TABLE IF NOT EXISTS culturas (id INTEGER PRIMARY KEY, cultura TEXT);'
                         'CREATE TABLE IF NOT EXISTS areas ('
                         'id INTEGER PRIMARY KEY, '
-                        'id_cultura INTEGER, '
+                        'nome TEXT, '
                         'figura TEXT, '
                         'largura INTEGER, '
                         'comprimento INTEGER, '
@@ -34,6 +34,7 @@ def check_database():
                         'CREATE TABLE IF NOT EXISTS insumos ('
                         'id INTEGER PRIMARY KEY, '
                         'id_cultura INTEGER, '
+                        'id_area INTEGER, '
                         'produto TEXT, '
                         'dosagem REAL, '
                         'unidade TEXT, '
@@ -97,44 +98,46 @@ def excluir_cultura(_id):
     run('DELETE FROM culturas WHERE id = ?', (_id,))
 
 def area(_id) -> list:
-    return query('SELECT id_cultura, figura, largura, comprimento, base, altura, raio, base_menor, area FROM areas WHERE id = ' + str(_id))
+    return query('SELECT nome, figura, largura, comprimento, base, altura, raio, base_menor, area FROM areas WHERE id = ' + str(_id))
 
 def areas() -> pd.DataFrame:
     r = query(
-        'SELECT a.id, c.cultura, a.figura, a.largura || "m" as largura, a.comprimento || "m" as comprimento,'
+        'SELECT a.id, a.nome, a.figura, a.largura || "m" as largura, a.comprimento || "m" as comprimento,'
         '       a.base || "m" as base, a.altura || "m" as altura, a.raio || "m" as raio,'
         '       a.base_menor || "m" as base_menor, printf("%,.2f", a.area) || "ha" as area'
-        '  FROM culturas c, areas a'
-        ' WHERE a.id_cultura = c.id'
+        '  FROM areas a'
     )
-    return pd.DataFrame(r, columns=['ID', 'Cultura', 'Figura', 'Largura', 'Comprimento', 'Base', 'Altura', 'Raio', 'Base Menor', 'Área']).set_index('ID')
+    return pd.DataFrame(r, columns=['ID', 'Nome', 'Figura', 'Largura', 'Comprimento', 'Base', 'Altura', 'Raio', 'Base Menor', 'Área']).set_index('ID')
 
-def salvar_area(_id, _id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area):
+def areas_lov() -> list:
+    return query('SELECT id, nome FROM areas')
+
+def salvar_area(_id, _nome, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area):
     if _id is not None:
         run(
-            'UPDATE areas SET id_cultura = ?, figura = ?, largura = ?, comprimento = ?, base = ?, altura = ?, raio = ?, base_menor = ?, area = ? WHERE id = ?',
-            (_id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _id)
+            'UPDATE areas SET nome = ?, figura = ?, largura = ?, comprimento = ?, base = ?, altura = ?, raio = ?, base_menor = ?, area = ? WHERE id = ?',
+            (_nome, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area, _id)
         )
     else:
         run(
-            'INSERT INTO areas (id_cultura, figura, largura, comprimento, base, altura, raio, base_menor, area) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            (_id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area)
+            'INSERT INTO areas (nome, figura, largura, comprimento, base, altura, raio, base_menor, area) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            (_nome, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area)
         )
 
 def excluir_area(_id):
     run('DELETE FROM insumos WHERE id_area = ?', (_id,))
     run('DELETE FROM areas WHERE id = ?', (_id,))
 
-def salvar_insumo(_id, id_cultura, produto, dosagem, unidade, ruas, comprimento, total):
+def salvar_insumo(_id, _id_cultura, _id_area, _produto, _dosagem, _unidade, _ruas, _comprimento, _total):
     if _id is not None:
         run(
-            'UPDATE insumos SET id_cultura = ?, produto = ?, dosagem = ?, unidade = ?, ruas = ?, comprimento = ?, total = ? WHERE id = ?',
-            (id_cultura, produto, dosagem, unidade, ruas, comprimento, total, _id)
+            'UPDATE insumos SET id_cultura = ?, id_area = ?, produto = ?, dosagem = ?, unidade = ?, ruas = ?, comprimento = ?, total = ? WHERE id = ?',
+            (_id_cultura, _id_area, _produto, _dosagem, _unidade, _ruas, _comprimento, _total, _id)
         )
     else:
         run(
-            'INSERT INTO insumos (id_cultura, produto, dosagem, unidade, ruas, comprimento, total) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            (id_cultura, produto, dosagem, unidade, ruas, comprimento, total)
+            'INSERT INTO insumos (id_cultura, id_area, produto, dosagem, unidade, ruas, comprimento, total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            (_id_cultura, _id_area, _produto, _dosagem, _unidade, _ruas, _comprimento, _total)
         )
 
 def excluir_insumo(_id):
@@ -142,18 +145,19 @@ def excluir_insumo(_id):
 
 def insumos() -> pd.DataFrame:
     r = query(
-        'SELECT i.id, c.cultura, printf("%,.2f", a.area) || "ha - " || a.figura as area, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento, i.total || i.unidade as total'
+        'SELECT i.id, c.cultura, printf("%,.2f", a.area) || "ha - " || a.figura as area, i.ruas, i.comprimento || "m" as comprimento,'
+        '       i.produto, i.dosagem || i.unidade || "/m" as dosagem, i.total || i.unidade as total'
         '  FROM insumos i'
         '  LEFT JOIN culturas c'
         '    ON c.id = i.id_cultura'
         '  LEFT JOIN areas a'
-        '    ON a.id_cultura = i.id_cultura'
+        '    ON a.id = i.id_area'
     )
-    return pd.DataFrame(r, columns=['ID', 'Cultura', 'Área', 'Produto', 'Dosagem', 'Unidade', 'Ruas', 'Comprimento', 'Total']).set_index('ID')
+    return pd.DataFrame(r, columns=['ID', 'Cultura', 'Área', 'Ruas', 'Comprimento', 'Produto', 'Dosagem', 'Total']).set_index('ID')
 
 def insumo(_id) -> list:
     return query(
-        'SELECT i.id_cultura, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento'
+        'SELECT i.id_cultura, i.id_area, i.produto, i.dosagem, i.unidade, i.ruas, i.comprimento'
         '  FROM insumos i'
         ' WHERE i.id = ' + str(_id)
     )

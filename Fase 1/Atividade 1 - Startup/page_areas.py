@@ -6,7 +6,7 @@ figuras_lov = ['Retângulo', 'Triângulo', 'Círculo', 'Trapézio']
 # adicionar área em janela modal
 @st.dialog("Detalhes da Área")
 def detalhes_area(_id=None):
-    _id_cultura = 0
+    _nome = None
     _figura = 0
     _largura = None
     _comprimento = None
@@ -15,14 +15,10 @@ def detalhes_area(_id=None):
     _raio = None
     _base_menor = None
     _area = 0.0
-    culturas = db.culturas_lov()
     if _id is not None:
         area = db.area(_id)
         if area is not None:
-            try:
-                _id_cultura = [x[0] for x in culturas].index(area[0][0])
-            except ValueError:
-                _id_cultura = 0
+            _nome = area[0][0]
             try:
                 _figura = figuras_lov.index(area[0][1])
             except ValueError:
@@ -34,8 +30,7 @@ def detalhes_area(_id=None):
             _raio = area[0][6]
             _base_menor = area[0][7]
 
-    culturas = culturas or [(0, "Selecione...")]
-    _id_cultura = st.selectbox("Cultura", culturas, index=_id_cultura, placeholder="Selecione...", format_func=lambda x: x[1])[0]
+    _nome = st.text_input("Nome da Área", value=_nome)
     _figura = st.selectbox('Geometria da Área de Plantio', figuras_lov, index=_figura, placeholder='Selecione...')
     if _figura == 'Retângulo':
         _col1, _col2 = st.columns(2)
@@ -91,11 +86,11 @@ def detalhes_area(_id=None):
     _col1, _col2 = st.columns([2, 9])
     with _col1:
         if st.button("Salvar", type="primary"):
-            if _id_cultura:
-                db.salvar_area(_id, _id_cultura, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area)
+            if _nome and _figura:
+                db.salvar_area(_id, _nome, _figura, _largura, _comprimento, _base, _altura, _raio, _base_menor, _area)
                 st.rerun()
             else:
-                erro_msg = "Por favor, informe a cultura."
+                erro_msg = "Por favor, informe os dados da área de plantio."
     with _col2:
         if _id is not None and st.button("Excluir"):
             db.excluir_area(_id)

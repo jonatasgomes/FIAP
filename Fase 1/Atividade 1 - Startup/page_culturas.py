@@ -10,7 +10,7 @@ def detalhes_cultura(_id=None):
         if cultura is not None:
             _cultura = cultura[0][1]
 
-    _cultura = st.text_input("Cultura", placeholder="Selecione...", value=_cultura)
+    _cultura = st.text_input("Cultura", value=_cultura)
     erro_msg = None
     _col1, _col2 = st.columns([2, 9])
     with _col1:
