@@ -4,7 +4,7 @@ import subprocess
 # executa o script R
 def executar_script_r(_cidade, _pais):
     _resultado = subprocess.run(
-        ['Rscript', 'R_chamar_api_clima.R', f'{_cidade}', f'{_pais}'],
+        ['Rscript', 'r_chamar_api_clima.R', f'{_cidade}', f'{_pais}'],
         capture_output=True,
         text=True
     )

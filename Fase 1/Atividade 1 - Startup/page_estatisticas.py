@@ -7,7 +7,7 @@ import plotly.express as px
 def executar_script_r():
     # executa o script R
     resultado = subprocess.run(
-        ['Rscript', 'R_calcular_estatisticas.R'],
+        ['Rscript', 'r_calcular_estatisticas.R'],
         capture_output=True,
         text=True
     )
