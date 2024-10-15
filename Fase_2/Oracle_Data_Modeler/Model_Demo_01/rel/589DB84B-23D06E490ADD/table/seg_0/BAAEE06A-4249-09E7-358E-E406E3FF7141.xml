@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BAAEE06A-4249-09E7-358E-E406E3FF7141" name="order_produtcs">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<ordsAlias>hasv2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Order_id" id="8031C780-B0E6-9870-A9B2-4A8E2A2C79A4">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E39BFA75-3815-6FEB-E5B8-5C041C926E04" referredColumn="AA3DBB58-E392-3FC9-BE9F-62798FB60827"/>
+</associations>
+</Column>
+<Column name="Product_id" id="788176C1-3AC9-B77C-A04B-DDAA41934681">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5124AD14-46FC-5878-F9DF-8ECB3AF87D81" referredColumn="E215D4FE-8C3E-16B9-13E2-60DD8E21596B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1F58DBEC-C93E-9E90-C23A-562BEA64509D" name="hasv2_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8031C780-B0E6-9870-A9B2-4A8E2A2C79A4"/>
+<colUsage columnID="788176C1-3AC9-B77C-A04B-DDAA41934681"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BEBECF22-83C0-33CF-D991-B8ADCBC1E2A3" name="hasv2_Order_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>AFE7A667-BF61-D1D4-80E0-AD40A408B36E</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8031C780-B0E6-9870-A9B2-4A8E2A2C79A4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AAACE0C0-15E8-F65F-0D5E-D87ADC06F3F2" name="hasv2_Product_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>AFE7A667-BF61-D1D4-80E0-AD40A408B36E</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="788176C1-3AC9-B77C-A04B-DDAA41934681"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

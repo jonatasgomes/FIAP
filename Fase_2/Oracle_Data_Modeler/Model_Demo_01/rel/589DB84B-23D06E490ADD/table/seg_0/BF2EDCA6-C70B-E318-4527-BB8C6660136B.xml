@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BF2EDCA6-C70B-E318-4527-BB8C6660136B" name="order">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>2DEC32F1-2702-AB2C-E867-58BD1E51F3D9</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="AA3DBB58-E392-3FC9-BE9F-62798FB60827">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>683EF1A7-B9BD-58AA-A3BA-A5EF1E6E6F59</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="order_date" id="708B290F-0AF2-F606-7B91-19520E24A82D">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>FAB48EEA-426D-CAE0-F1C5-2B5C4CCBAB60</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="amount" id="0629D077-58E5-08AC-4AAE-AECA64185A74">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>CFB7010E-B7C9-D944-21AE-4D324B06AD4F</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E3450F0B-F125-5F0E-A4A2-AFD09199F083" name="Order_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>AAEB9C53-8F38-7D5C-6918-7B2B8BFF0B79</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AA3DBB58-E392-3FC9-BE9F-62798FB60827"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

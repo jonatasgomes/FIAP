@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="05C292BE-4089-E7A9-08B2-113B682A3051" name="driver_license">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 14:00:45 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<engineerTo>
+<item key="589DB84B-E158-FB41-DD62-23D06E490ADD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="20CF2D51-4676-D08F-554F-22382DA3FC5B">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 14:01:10 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<engineerTo>
+<item key="589DB84B-E158-FB41-DD62-23D06E490ADD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="person_id" id="A7A85874-8576-9F79-5747-B6D9F6EE4813">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 14:02:19 UTC</createdTime>
+<generatorID>28611D71-C861-F8C8-092B-D3DBCD4A05E5</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<engineerTo>
+<item key="589DB84B-E158-FB41-DD62-23D06E490ADD" value="true"/>
+</engineerTo>
+<referedAttribute>658D3013-6F60-D856-1450-8A4A86979189</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="license_num" id="75BF428D-35C2-56FA-12DF-D751D428E232">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 14:01:17 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<engineerTo>
+<item key="589DB84B-E158-FB41-DD62-23D06E490ADD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="issue_date" id="9AAFD369-C2FB-3E4A-BCF6-A61B10BC4527">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 14:01:47 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<engineerTo>
+<item key="589DB84B-E158-FB41-DD62-23D06E490ADD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DC8BA6A9-3E10-21B5-37D0-E88392B33DFF" name="DriverLicense PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 14:01:14 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="589DB84B-E158-FB41-DD62-23D06E490ADD" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>20CF2D51-4676-D08F-554F-22382DA3FC5B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

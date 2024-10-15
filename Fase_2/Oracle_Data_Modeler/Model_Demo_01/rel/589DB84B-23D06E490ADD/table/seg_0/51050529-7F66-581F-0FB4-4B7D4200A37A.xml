@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="51050529-7F66-581F-0FB4-4B7D4200A37A" name="emp">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>77B2DC04-FEA8-9141-BA1D-68BE4DFF800D</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="6194340A-0E74-70FE-0DD6-C9C56E098212">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>1BD16F86-3626-F302-F686-5C7E33185E60</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="dept_id" id="0EDEA8F5-59FC-E8B7-FD0A-A4C0FAF6D894">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>8B6C83A2-0220-8B73-1F18-7058F4A9A9FF</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1E2BE936-C308-B2B1-DCCC-7614C0D832AE" referredColumn="4BB80BB9-E633-4D71-8E95-B0D3E5AB076C"/>
+</associations>
+</Column>
+<Column name="name" id="728B82F2-E342-8A56-3454-E5BF48CA01C4">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>4E8F1EBF-5C7E-DEF6-8CB3-0EB798DFD08D</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="effective_date" id="E315E536-3F94-88F3-A23D-6DA013D71F57">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>2B66107C-B181-04B5-70F3-EDA8FBC57E43</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id1" id="3AFBF645-AC25-EC0D-C770-7B6F88B8E58C">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:45:57 UTC</createdTime>
+<generatorID>1F6D3C7C-DCBD-C041-E688-164DD3B1AA7C</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B6027F09-A728-E638-7CE0-DFD73D4E3BE4" name="Emp_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>B7BCC448-2B31-A895-071E-CBD0DB348D7A</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6194340A-0E74-70FE-0DD6-C9C56E098212"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1CB63E8F-382F-6F7E-DE42-757F481932E7" name="emp_dept_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>8CFEF3CD-FCC5-D0D5-FE75-68403E71A1BD</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0EDEA8F5-59FC-E8B7-FD0A-A4C0FAF6D894"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

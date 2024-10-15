@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BF5C08E9-A10B-244E-AAC1-35FBC1B2A6F8" name="driver_license">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>05C292BE-4089-E7A9-08B2-113B682A3051</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="A866862B-B7D8-EA1D-9AFE-8C9F5BD323AA">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>20CF2D51-4676-D08F-554F-22382DA3FC5B</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="person_id" id="9CCCB17E-6DC3-A04B-2FC1-AF6A19B94830">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>A7A85874-8576-9F79-5747-B6D9F6EE4813</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="68A26C71-A414-15AD-9930-E671FDDD44A1" referredColumn="690FCF48-FBF2-5E3E-EDAA-696BAF25F347"/>
+</associations>
+</Column>
+<Column name="license_num" id="971E1D64-E716-4231-99B5-204937E42D6B">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>75BF428D-35C2-56FA-12DF-D751D428E232</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="issue_date" id="E0618D7D-622E-419C-B8B6-647B7570251A">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>9AAFD369-C2FB-3E4A-BCF6-A61B10BC4527</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0C279324-B2C6-F339-6A9D-836AB0E505DE" name="DriverLicense_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>DC8BA6A9-3E10-21B5-37D0-E88392B33DFF</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A866862B-B7D8-EA1D-9AFE-8C9F5BD323AA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B382139A-03B2-2FCF-275A-946E92D8997E" name="DriverLicense__IDX">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>28611D71-C861-F8C8-092B-D3DBCD4A05E5</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="9CCCB17E-6DC3-A04B-2FC1-AF6A19B94830"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B3BA5C54-31A1-03B4-CAF4-7310EB9F4D02" name="driver_license_person_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-08 20:21:02 UTC</createdTime>
+<generatorID>28611D71-C861-F8C8-092B-D3DBCD4A05E5</generatorID>
+<ownerDesignName>Model_Demo_01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9CCCB17E-6DC3-A04B-2FC1-AF6A19B94830"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
