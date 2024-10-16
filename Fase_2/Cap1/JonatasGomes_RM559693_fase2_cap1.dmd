@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="JonatasGomes_RM559693_fase2_cap1" id="4D2332F4-3533-F955-FE1C-C26947C66846" version="3.5">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:24:30 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>4D2332F4-3533-F955-FE1C-C26947C66846</designId>
+</OSDM_Design>
