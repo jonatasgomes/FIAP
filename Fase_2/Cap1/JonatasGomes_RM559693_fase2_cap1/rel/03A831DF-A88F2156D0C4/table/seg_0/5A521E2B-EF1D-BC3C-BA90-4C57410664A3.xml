@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5A521E2B-EF1D-BC3C-BA90-4C57410664A3" name="Sensor">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>AC30623D-D010-1834-E91A-9CFD32389031</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_sensor" id="87D45708-ACA6-9406-051C-40A0DA10451E">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>C17280A3-6C0A-A0EC-F076-89B71712FE5B</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo_sensor" id="C13A2F7C-C8FA-8207-5262-E9B18C0700C9">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>7EEDA391-86AB-8BC8-7673-972DDE7BEA6B</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descricao" id="304C8662-6F95-DE11-3B76-8214F47FB2E9">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>DBC84063-CDB1-7F96-D417-EBF26B00D393</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C8231028-DA7E-D050-0704-7D11D1046F29" name="Sensor_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>FA43AE98-BD89-6D7A-76DB-F875DEB2FF2E</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="87D45708-ACA6-9406-051C-40A0DA10451E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

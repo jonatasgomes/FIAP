@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="220A2351-A6A9-6F49-A43F-078453F93E37" name="Aplicacao">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>97231EA2-861A-DAA5-B815-C987AD32634C</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_aplicacao" id="5A45E9D6-4E86-0CB5-56ED-81B9E7A471FB">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>6A4878B2-766E-246D-7288-37D9391014A4</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_cultura" id="8F742EE3-1A00-F098-8C6C-D484B8A675DF">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>7A074957-7BB7-EC74-D2A1-C08307661B47</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CE8EA8C4-864B-6355-41AD-036773BE97FA" referredColumn="122FDBC1-E849-C871-E5C3-98279475657B"/>
+</associations>
+</Column>
+<Column name="id_insumo" id="C5953214-8358-4565-B035-75E58BFA0DB2">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>0AA01913-B71A-C7A1-DFD3-F8914B5AF6A2</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B849BC5D-94F8-E62A-C7FC-A957694F36B9" referredColumn="E6831169-12D7-2058-610F-A35B41BE99F3"/>
+</associations>
+</Column>
+<Column name="data_hora" id="520EFB46-4D6C-BEFD-BC41-E56A34EA8DC4">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>5DD55FD7-0EF4-C1B5-5AD4-9189872ECF18</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="quantidade" id="E28DBC6F-A0C2-ABC8-6FD8-EE59EB2B0520">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>698855D7-4250-4059-1391-CC8A056BE9F0</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CCF723B2-E7F1-939D-622E-7A2E3482666B" name="Aplicacao_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>B00F9287-AF28-A20E-E2FA-BA9A6F4FB8C5</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5A45E9D6-4E86-0CB5-56ED-81B9E7A471FB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2CAC3C07-47A3-94D7-CE41-A6E10349B02D" name="Aplicacao_Cultura_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>9109DFB2-5055-9538-1C1C-2FFC7498C713</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8F742EE3-1A00-F098-8C6C-D484B8A675DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="848DAA9E-2788-60C6-9BFA-22478A19783B" name="Aplicacao_Insumo_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>F9847A10-62BB-384B-F8CB-5B1F3A42A163</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C5953214-8358-4565-B035-75E58BFA0DB2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

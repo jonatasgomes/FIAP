@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C8641AFB-1C40-5F12-6276-0970C0FDD036" name="Produtor">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:39 UTC</createdTime>
+<generatorID>979C35ED-ADF5-E540-5012-31C151D76E6F</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_produtor" id="5D031166-016D-31F5-09E3-850392833A64">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>502EB89E-B72C-20AB-4512-1D3823F3E879</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome" id="D12837CE-56FA-FCA2-CB9C-133847967285">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>2898A434-B03E-20C1-457C-9008272A5A3C</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="localizacao" id="CAAB3A5C-A1C8-F7B1-3782-584867584470">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>68A94ABE-B934-FD13-35E7-A3D5F3707F8A</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D9C77AE1-B03C-CFB9-1DF6-2B9CBF7FF6AD" name="Produtor_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>D43F2B47-BD61-8C7E-B8E8-06D1840E2C66</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5D031166-016D-31F5-09E3-850392833A64"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

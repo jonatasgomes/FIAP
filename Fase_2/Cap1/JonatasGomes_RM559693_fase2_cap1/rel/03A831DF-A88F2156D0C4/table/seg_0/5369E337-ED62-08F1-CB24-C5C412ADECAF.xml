@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5369E337-ED62-08F1-CB24-C5C412ADECAF" name="Previsao">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>E4907ED2-6570-E6C4-A17A-4569A371BD5D</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_previsao" id="57740AF2-6CDE-9CCF-5581-095C7B821118">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>4D81E938-F0A8-D189-3EC6-B01F88F3D6B8</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_cultura" id="FE8EC9EA-0A1A-99CC-DE87-ABC86C106A96">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>2E7AAADE-3C21-F0EC-300C-95376639C69A</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B9FDD432-B1A7-D65A-F649-0815B1EC6265" referredColumn="122FDBC1-E849-C871-E5C3-98279475657B"/>
+</associations>
+</Column>
+<Column name="id_insumo" id="54AAE181-B12E-FA36-1653-BA210D4796EF">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>BDE4B185-B8A4-B04F-4AF0-CA509EE9E714</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1B8F919D-CBE6-8F88-E6A6-A913CE059451" referredColumn="E6831169-12D7-2058-610F-A35B41BE99F3"/>
+</associations>
+</Column>
+<Column name="data_previsao" id="EAFAA3DB-92B2-D2C0-5C68-8A5A7D4B6DCE">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>EA8A7090-1128-2BAF-B3CF-A06AC2E30436</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="quantidade" id="D6BA60A6-5100-E1AE-0631-151469539E78">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>E1BCA1E5-551B-890C-166E-825F5923734A</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="67C116F6-D657-BBB8-B94A-F31BD3BEADA6" name="Previsao_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>C0BEEE6F-BDC0-8BBD-C705-B1EBDE685CA7</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="57740AF2-6CDE-9CCF-5581-095C7B821118"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BB5A729C-2885-639C-685E-E3DC91FCB7E4" name="Previsao_Cultura_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>E4504A4D-1886-6A25-ADA3-377F1E9D052D</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FE8EC9EA-0A1A-99CC-DE87-ABC86C106A96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B00F37E3-1E78-C8DB-2285-97B7C1652780" name="Previsao_Insumo_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:22:33 UTC</createdTime>
+<generatorID>BBE168E9-BC02-6E05-6248-AC9F7183F0C8</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="54AAE181-B12E-FA36-1653-BA210D4796EF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

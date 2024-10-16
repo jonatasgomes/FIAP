@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Cultura_Previsao_FK" directorySegmentName="seg_0" id="E4504A4D-1886-6A25-ADA3-377F1E9D052D">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:21:05 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<sourcePk>D175F4B8-2B30-4252-3B55-440186A616C6</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>CF1E150B-0CDC-D4AF-9F20-0959C5DB61B6</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E4907ED2-6570-E6C4-A17A-4569A371BD5D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E4907ED2-6570-E6C4-A17A-4569A371BD5D" name="Previsao">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:19:44 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_previsao" id="4D81E938-F0A8-D189-3EC6-B01F88F3D6B8">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:19:53 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_cultura" id="2E7AAADE-3C21-F0EC-300C-95376639C69A">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:21:05 UTC</createdTime>
+<generatorID>E4504A4D-1886-6A25-ADA3-377F1E9D052D</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<referedAttribute>EFAABF3D-6760-7276-8597-01FFDAB57ED7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_insumo" id="BDE4B185-B8A4-B04F-4AF0-CA509EE9E714">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:21:25 UTC</createdTime>
+<generatorID>BBE168E9-BC02-6E05-6248-AC9F7183F0C8</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<referedAttribute>0C8BCC1E-6C62-77F6-C8AD-17481EC90A79</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_previsao" id="EA8A7090-1128-2BAF-B3CF-A06AC2E30436">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:20:07 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="quantidade" id="E1BCA1E5-551B-890C-166E-825F5923734A">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:20:33 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C0BEEE6F-BDC0-8BBD-C705-B1EBDE685CA7" name="Previsao PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:20:06 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4D81E938-F0A8-D189-3EC6-B01F88F3D6B8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

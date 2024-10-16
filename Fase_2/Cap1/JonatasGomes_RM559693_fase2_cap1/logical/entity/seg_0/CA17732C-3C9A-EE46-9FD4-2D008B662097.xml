@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CA17732C-3C9A-EE46-9FD4-2D008B662097" name="Insumo">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:06:06 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_insumo" id="0C8BCC1E-6C62-77F6-C8AD-17481EC90A79">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:06:12 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nome" id="D02DE218-020D-337F-433B-8BBA86448F69">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:06:26 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="909076B5-0D5F-4F68-043F-F0F62281C635" name="Insumo PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:06:24 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0C8BCC1E-6C62-77F6-C8AD-17481EC90A79</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

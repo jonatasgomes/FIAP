@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CF1E150B-0CDC-D4AF-9F20-0959C5DB61B6" name="Cultura">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:41:38 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_cultura" id="EFAABF3D-6760-7276-8597-01FFDAB57ED7">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:41:46 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nome" id="61843F60-E62F-DEDF-A306-0E5FBECF9840">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:42:08 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipo" id="0AD69053-E212-90D0-ED11-9B53D8C98639">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:42:25 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="area" id="5623E36C-03DD-164D-3FCB-61D2D878DB47">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:42:42 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_produtor" id="14766C4E-DA76-0F79-A231-7E1F4DD80217">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:13:34 UTC</createdTime>
+<generatorID>84426670-7E16-CA3D-C051-970C8E6F45D1</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<referedAttribute>502EB89E-B72C-20AB-4512-1D3823F3E879</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D175F4B8-2B30-4252-3B55-440186A616C6" name="Cultura PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:42:00 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>EFAABF3D-6760-7276-8597-01FFDAB57ED7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

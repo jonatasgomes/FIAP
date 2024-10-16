@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="4F3CBED4-4099-E813-13F3-8074235EC83A" containerWithKeyObject="BBD7D3E5-EDC2-D826-59F6-C3414E63A557" localFKIndex="CC253855-237B-87B4-9208-2EDD5C54CD56" name="Leitura_Cultura_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:15:40 UTC</createdTime>
+<generatorID>7A763E23-4C63-D784-90BE-E84A098D9356</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<referredTableLongName>Cultura</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A3841F33-A052-DCB3-5964-856A932F1B17</referredTableID>
+<keyObject>47429D0C-67C3-166F-3BB4-6B116040ACFD</keyObject>
+<referredKeyID>47429D0C-67C3-166F-3BB4-6B116040ACFD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_cultura</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

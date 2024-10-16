@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="85D03553-08A3-7601-16B5-FB588233B60B" name="Leitura">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:43:16 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_leitura" id="6045312B-2C8D-818B-86C5-E8C7D49241DC">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:43:37 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_sensor" id="BA5B630F-D250-73C2-E6CF-CA4C261ABD66">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:56:21 UTC</createdTime>
+<generatorID>80AFFE65-4D41-2191-40AB-FFE65037803B</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<referedAttribute>C17280A3-6C0A-A0EC-F076-89B71712FE5B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_cultura" id="97482A47-8DD0-E826-DA61-9F185A14EF01">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:57:00 UTC</createdTime>
+<generatorID>7A763E23-4C63-D784-90BE-E84A098D9356</generatorID>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<referedAttribute>EFAABF3D-6760-7276-8597-01FFDAB57ED7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_hora" id="4E830FC6-DEC2-0F7D-542B-F1C86F58A906">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:45:26 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valor" id="B5317444-6609-A3D6-3390-F96258F14C02">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:45:48 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8494E6F5-8A3A-8EA0-20B2-9640B4A67383" name="Leitura PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 14:43:51 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6045312B-2C8D-818B-86C5-E8C7D49241DC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

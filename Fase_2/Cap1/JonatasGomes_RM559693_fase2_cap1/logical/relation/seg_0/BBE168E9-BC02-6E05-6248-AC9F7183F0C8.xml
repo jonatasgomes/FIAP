@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Insumo_Previsao_FK" directorySegmentName="seg_0" id="BBE168E9-BC02-6E05-6248-AC9F7183F0C8">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-16 15:21:25 UTC</createdTime>
+<ownerDesignName>JonatasGomes_RM559693_fase2_cap1</ownerDesignName>
+<engineerTo>
+<item key="03A831DF-58DB-6D53-E82E-A88F2156D0C4" value="true"/>
+</engineerTo>
+<sourcePk>909076B5-0D5F-4F68-043F-F0F62281C635</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>CA17732C-3C9A-EE46-9FD4-2D008B662097</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E4907ED2-6570-E6C4-A17A-4569A371BD5D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
