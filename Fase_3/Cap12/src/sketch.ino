@@ -6,9 +6,13 @@
 #define DHT22_SDA_PIN 25 // pino SDA do sensor de umidade/temperatura DHT22
 #define DHT22_MODEL DHT22 // tipo do sensor DHT22
 #define RELAY2_IN_PIN 26 // pino IN do relé para irrigacao
+#define PIR_OUT_PIN 2 // pino OUT do sensor de movimento PIR
+#define RELAY3_IN_PIN 15 // pino IN do relé para alarme
+#define SPEAKER_PIN 0 // pino OUT do speaker para alarme
 
 const int alturaReservatorio = 400; // altura do reservatorio de agua em cm
-DHT dht(DHT22_SDA_PIN, DHT22_MODEL);
+DHT dht(DHT22_SDA_PIN, DHT22_MODEL); // criar objeto para conectar ao sensor DHT
+bool movDetectado = false;
 
 // inicializacao e configuracao da placa e pinos
 void setup() {
@@ -18,12 +22,16 @@ void setup() {
   pinMode(RELAY1_IN_PIN, OUTPUT); // setar pino como saida/escrita
   pinMode(RELAY2_IN_PIN, OUTPUT); // setar pino como saida/escrita
   dht.begin(); // inicializar sensor DHT22
+  pinMode(PIR_OUT_PIN, INPUT); // setar pino como entrada/leitura
+  pinMode(RELAY3_IN_PIN, OUTPUT); // setar pino como saida/escrita
+  pinMode(SPEAKER_PIN, OUTPUT); // setar pino como saida/escrita
 }
 
 // loop principal
 void loop() {
   monitorarNivelAgua(); // monitorar nivel de agua no reservatorio e ligar/desligar bomba d'agua
   monitorarTemperaturaUmidade(); // monitorar temperatura e umidade e ligar/desligar irrigacao
+  monitorarMovimentos(); // monitorar movimentos e ligar/desligar alarme
   delay(500); // Wait for 2 seconds before taking another reading
 }
 
@@ -69,5 +77,27 @@ void monitorarTemperaturaUmidade() {
   } else {
     digitalWrite(RELAY2_IN_PIN, LOW); // desligar irrigacao
     Serial.println("Irrigação desligada.");
+  }
+}
+
+// user sensor PIR para detectar movimentos e ligar/desligar alarme
+void monitorarMovimentos() {
+  int mov = digitalRead(PIR_OUT_PIN); // ler sensor de movimentos
+  if (mov == HIGH) {
+    if (!movDetectado) {
+      digitalWrite(RELAY3_IN_PIN, HIGH); // ligar alarme
+      tone(SPEAKER_PIN, 1568);
+      Serial.println("Movimento detectado.");
+      movDetectado = true; // evitar que o alarme seja ligado em duplicidade
+    }
+    Serial.println("Alarme ligado.");
+  } else {
+    if (movDetectado) {
+      digitalWrite(RELAY3_IN_PIN, LOW); // desligar alarme
+      noTone(SPEAKER_PIN);
+      Serial.println("Movimento parou.");
+      movDetectado = false; // permitir que o alarme seja religado
+    }
+    Serial.println("Alarme desligado.");
   }
 }
