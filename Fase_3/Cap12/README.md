@@ -44,13 +44,13 @@ As dependências podem ser instaladas pela IDE Arduino, acessando "Bibliotecas >
 Os testes do sistema foram realizados manualmente, simulando diferentes cenários no Wokwi. Foram realizados casos de teste para verificar o comportamento dos sensores e dos atuadores. Abaixo estão descritos alguns dos casos de teste executados :
 
 - **CT001**: Nível de água menor que 80% - **Resultado Esperado**: Irrigação ligada.
-<img src="./tests/CT001.png" alt="CT001" border="0" width=60% height=60%>
+<img src="./tests/CT001.png" alt="CT001" border="0" width=60% height=60% />
 - **CT002**: Nível de água maior ou igual a 80% - **Resultado Esperado**: Irrigação desligada.
-<img src="./tests/CT002.png" alt="CT001" border="0" width=60% height=60%>
+<img src="./tests/CT002.png" alt="CT002" border="0" width=60% height=60% />
 - **CT003**: Umidade menor que 40% ou temperatura maior que 30°C - **Resultado Esperado**: Irrigação ligada.
-<img src="./tests/CT003.png" alt="CT001" border="0" width=60% height=60%>
+<img src="./tests/CT003.png" alt="CT003" border="0" width=60% height=60% />
 - **CT008**: Presença detectada pelo PIR - **Resultado Esperado**: Alarme ligado.
-<img src="./tests/CT008.png" alt="CT001" border="0" width=60% height=60%>
+<img src="./tests/CT008.png" alt="CT004" border="0" width=60% height=60% />
 
 Capturas de tela dos testes realizados estão disponíveis no repositório.
 
