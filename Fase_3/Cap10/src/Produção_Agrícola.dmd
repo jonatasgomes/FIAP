@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Produção_Agrícola" id="9832A3EA-5945-77DF-9FCE-74B5F5085AB3" version="3.5">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 13:17:01 UTC</createdTime>
+<ownerDesignName>Produção_Agrícola</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>9832A3EA-5945-77DF-9FCE-74B5F5085AB3</designId>
+</OSDM_Design>
