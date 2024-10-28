@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="473F2BF2-379D-23FA-9C75-31C2B5B935D6" name="Regiao">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>95EB9449-45EC-52B7-49E6-D758944EB6ED</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="EE99C05F-9042-9E43-392A-20B405DDA933">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>AA09CE05-8129-8C6B-76BD-A43190238E6B</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nome" id="90A8FE33-8CAE-8F42-EDDA-F90C9AE68060">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>31F95C6D-920E-76C3-DCE0-F26A47EA9191</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AA8C7403-9499-9768-2286-13008D58385E" name="Regiao_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>AF0B2352-A9A6-0905-5DA4-0913191731EB</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EE99C05F-9042-9E43-392A-20B405DDA933"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

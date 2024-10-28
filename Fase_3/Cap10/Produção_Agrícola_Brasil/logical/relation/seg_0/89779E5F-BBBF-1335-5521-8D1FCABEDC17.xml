@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Producao_Safra_FK" directorySegmentName="seg_0" id="89779E5F-BBBF-1335-5521-8D1FCABEDC17">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:22:19 UTC</createdTime>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<engineerTo>
+<item key="9CDBF6F4-5E96-B87C-A031-F33181AAA338" value="true"/>
+</engineerTo>
+<sourcePk>A20937F0-7178-8203-DE5D-579F8BCFDC54</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>22F55809-C605-7508-4AF2-430C1F6B5595</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BA01DC32-DE84-9CE1-EA24-C0B4E863642E</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

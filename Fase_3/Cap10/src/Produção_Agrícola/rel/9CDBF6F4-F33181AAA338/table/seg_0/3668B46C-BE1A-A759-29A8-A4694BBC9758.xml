@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3668B46C-BE1A-A759-29A8-A4694BBC9758" name="UF">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>40B84DF7-1562-8B89-63EF-F2314A794BA9</generatorID>
+<ownerDesignName>Produção_Agrícola</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="B4592666-26DC-8B0E-E209-5EE6FBD7DB9D">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>8E4AC775-0078-E4BF-C7F5-9C2D095D1AC5</generatorID>
+<ownerDesignName>Produção_Agrícola</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_regiao" id="3B3E1B1D-AA17-550F-FCDF-811A136A917B">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>35706A80-5AB1-EF3E-2349-68C8DD15AA7B</generatorID>
+<ownerDesignName>Produção_Agrícola</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8275A523-A6E5-9B5F-F1CA-5727969AAE16" referredColumn="EE99C05F-9042-9E43-392A-20B405DDA933"/>
+</associations>
+</Column>
+<Column name="nome" id="E6DF8E59-3693-6780-F9B8-6F8D9F4A01F8">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>E2D970E3-EF3D-5C10-8A9C-791F12F27BAA</generatorID>
+<ownerDesignName>Produção_Agrícola</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="70424E7C-CB56-703B-DD2C-241C93C12A05" name="UF_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>3512EEFA-CFA9-B613-D93B-53B8CD0DDCFD</generatorID>
+<ownerDesignName>Produção_Agrícola</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B4592666-26DC-8B0E-E209-5EE6FBD7DB9D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7EAB4C04-889C-6CDC-8A55-CA0C806E6F2C" name="UF_Regiao_FK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>EF886857-6FA9-1246-0501-C6435308C8FC</generatorID>
+<ownerDesignName>Produção_Agrícola</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3B3E1B1D-AA17-550F-FCDF-811A136A917B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B765AEF8-94BB-AED3-0353-211ADA4BA959" name="Safra">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>22F55809-C605-7508-4AF2-430C1F6B5595</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="1595D06B-F2FA-77A3-B3E8-87F27988D605">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>7C52F7F2-67D9-1D48-DD7B-8167B553FEA6</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ano" id="D8F455F8-BEB7-E0D7-4EE2-05391924C78B">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>906A12E9-A66E-0730-BE0F-1B8424A0AB5F</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mes" id="A4EFD170-642F-BA07-8F1D-40196A6B1313">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>CC423493-9088-63F7-AD26-AA448CAEA4C8</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A0A8CC08-3ADC-2C7B-6FEE-445D915451B0" name="Safra_PK">
+<createdBy>jonatas</createdBy>
+<createdTime>2024-10-28 15:38:53 UTC</createdTime>
+<generatorID>A20937F0-7178-8203-DE5D-579F8BCFDC54</generatorID>
+<ownerDesignName>Produção_Agrícola_Brasil</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1595D06B-F2FA-77A3-B3E8-87F27988D605"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
