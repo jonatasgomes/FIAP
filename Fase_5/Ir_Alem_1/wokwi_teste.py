@@ -3,8 +3,7 @@ import time
 from machine import Pin
 import dht
 import urequests
-
-sensor = dht.DHT22(Pin(15))
+import ntptime
 
 def connect_to_wifi():
     print("Connecting to WiFi", end="\n")
@@ -14,27 +13,33 @@ def connect_to_wifi():
     while not sta_if.isconnected():
         print(".", end="")
         time.sleep(0.1)
-    print("Connected to WiFi:", sta_if.isconnected())
-    print("IP Address:", sta_if.ifconfig()[0])
+    print("\nConnected to WiFi:", sta_if.isconnected(), "IP Address:", sta_if.ifconfig()[0])
+
+def get_current_time_iso():
+    seconds = time.time() + 946684800
+    tm = time.localtime(seconds)
+    year, month, day, hour, minute, second, weekday, yearday = tm
+    return "{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d}.000Z".format(year, month, day, hour, minute, second)
 
 connect_to_wifi()
-api_url = "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/"
+ntptime.settime()
+sensor = dht.DHT22(Pin(15))
 
+api_url = "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/"
 prev_value = ""
+
 while True:
     print("Measuring weather conditions... ", end="\n")
-    sensor.measure()  # temperature = sensor.temperature()
+    sensor.measure()
     humidity = sensor.humidity()
-    dt = "2025-02-27T13:16:36.333Z"
-    message = f'{{"data_leitura": "{dt}", "sensor": "DHT22", "valor": {humidity}}}'
-    
+    dt = get_current_time_iso()
     if humidity != prev_value:
+        message = f'{{"data_leitura": "{dt}", "sensor": "DHT22", "valor": {humidity}}}'
         print("Reporting to Server:", message)
         headers = {"Content-Type": "application/json"}
         try:
             response = urequests.post(api_url, headers=headers, data=message)
             if response.status_code == 201:
-                print("Response Status Code:", response.status_code)
                 print("Response Content:", response.text)
                 print("Data successfully posted to the server!")
             else:
@@ -43,5 +48,4 @@ while True:
         except Exception as e:
             print("Error:", e)
         prev_value = humidity
-    
     time.sleep(5)
