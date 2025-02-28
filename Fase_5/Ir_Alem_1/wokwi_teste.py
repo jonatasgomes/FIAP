@@ -40,7 +40,8 @@ while True:
         try:
             response = urequests.post(api_url, headers=headers, data=message)
             if response.status_code == 201:
-                print("Response Content:", response.text)
+                response_json = response.json()
+                print("Created ID:", response_json.get("id"))
                 print("Data successfully posted to the server!")
             else:
                 print("Failed to post data. Status code:", response.status_code)
