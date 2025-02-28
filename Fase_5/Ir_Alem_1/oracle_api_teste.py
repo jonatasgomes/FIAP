@@ -1,4 +1,3 @@
-import json
 import requests
 from tabulate import tabulate
 import random
