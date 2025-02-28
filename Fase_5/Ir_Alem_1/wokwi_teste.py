@@ -2,13 +2,12 @@ import network
 import time
 from machine import Pin
 import dht
-import ujson
 import urequests
 
 sensor = dht.DHT22(Pin(15))
 
 def connect_to_wifi():
-    print("Connecting to WiFi", end="")
+    print("Connecting to WiFi", end="\n")
     sta_if = network.WLAN(network.STA_IF)
     sta_if.active(True)
     sta_if.connect('Wokwi-GUEST', '')
@@ -21,19 +20,15 @@ def connect_to_wifi():
 connect_to_wifi()
 api_url = "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/"
 
-prev_weather = ""
+prev_value = ""
 while True:
-    print("Measuring weather conditions... ", end="")
-    sensor.measure()
-    humidity = sensor.humidity() # temperature = sensor.temperature()
-    payload = {
-        "data_leitura": "2025-02-27T13:16:36.333Z",
-        "sensor": "DHT22",
-        "valor": humidity
-    }
-    message = ujson.dumps(payload)
+    print("Measuring weather conditions... ", end="\n")
+    sensor.measure()  # temperature = sensor.temperature()
+    humidity = sensor.humidity()
+    dt = "2025-02-27T13:16:36.333Z"
+    message = f'{{"data_leitura": "{dt}", "sensor": "DHT22", "valor": {humidity}}}'
     
-    if message != prev_weather:
+    if humidity != prev_value:
         print("Reporting to Server:", message)
         headers = {"Content-Type": "application/json"}
         try:
@@ -47,6 +42,6 @@ while True:
             response.close()
         except Exception as e:
             print("Error:", e)
-        prev_weather = message
+        prev_value = humidity
     
     time.sleep(5)
