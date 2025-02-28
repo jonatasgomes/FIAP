@@ -5,12 +5,12 @@
 ## Endpoints
 
 ### 1. Obter todos os registros
-- **URL:** `https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras`
+- **URL:** `https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/`
 - **Método:** `GET`
 - **Descrição:** Retorna uma lista de todos os registros disponíveis.
 - **Exemplo de Requisição via CURL:**
   ```bash
-  curl -L -X GET "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras" -H "Accept: application/json"
+  curl -L -X GET "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/" -H "Accept: application/json"
   ```
 - **Exemplo de Requisição via Browser:**
   ```
@@ -33,7 +33,7 @@
   ```
 
 ### 3. Criar um novo registro
-- **URL:** `https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras`
+- **URL:** `https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/`
 - **Método:** `POST`
 - **Descrição:** Cria um novo registro usando os dados fornecidos no corpo da requisição em formato JSON.
 - **Headers:**
@@ -48,7 +48,7 @@
   ```
 - **Exemplo de Requisição via CURL:**
   ```bash
-  curl -L -X POST "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras" \
+  curl -L -X POST "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/" \
        -H "Content-Type: application/json" \
        -d '{
             "data_leitura": "2025-02-27T13:16:36.333Z",
