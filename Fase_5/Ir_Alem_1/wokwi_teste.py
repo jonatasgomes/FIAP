@@ -9,20 +9,19 @@ def connect_to_wifi():
     print("Connecting to WiFi", end="\n")
     sta_if = network.WLAN(network.STA_IF)
     sta_if.active(True)
-    sta_if.connect('Wokwi-GUEST', '')
+    sta_if.connect('Wokwi-GUEST', '')  # Replace with your WiFi SSID
     while not sta_if.isconnected():
         print(".", end="")
         time.sleep(0.1)
     print("\nConnected to WiFi:", sta_if.isconnected(), "IP Address:", sta_if.ifconfig()[0])
 
 def get_current_time_iso():
-    seconds = time.time() + 946684800
-    tm = time.localtime(seconds)
+    tm = time.localtime()
     year, month, day, hour, minute, second, weekday, yearday = tm
     return "{:04d}-{:02d}-{:02d}T{:02d}:{:02d}:{:02d}.000Z".format(year, month, day, hour, minute, second)
 
 connect_to_wifi()
-ntptime.settime()
+ntptime.settime()  # Synchronize the clock with NTP
 sensor = dht.DHT22(Pin(15))
 
 api_url = "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/"
