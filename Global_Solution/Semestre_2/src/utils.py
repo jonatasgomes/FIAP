@@ -5,7 +5,7 @@ import streamlit as st
 API_NIVEL_AGUA = "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/nivel_agua/"
 API_VOLUME_CHUVA = "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/volume_chuva/"
 API_SALVAR_LEITURA = "https://g12bbd4aea16cc4-orcl1.adb.ca-toronto-1.oraclecloudapps.com/ords/fiap/leituras/"
-API_DISPARAR_SMS = "https://kjgm5dd4f4.execute-api.us-east-1.amazonaws.com/alerta"
+API_DISPARAR_SMS = "https://ijld8gsll8.execute-api.us-east-1.amazonaws.com/v1/alertaEnchente"
 
 def buscar_nivel_rio():
     try:
@@ -48,7 +48,7 @@ def salvar_leitura(sensor, valor):
         return False
 
 def enviar_alerta_sms(message: str):
-    payload = {"mensagem": message}
+    payload = {"message": message, "phone_numbers": ["+17782282166", "+5511938006662"]}
     try:
         response = requests.post(API_DISPARAR_SMS, json=payload, timeout=10)
         response.raise_for_status()
